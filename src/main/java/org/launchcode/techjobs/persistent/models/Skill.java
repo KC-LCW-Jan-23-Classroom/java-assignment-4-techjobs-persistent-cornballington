@@ -6,12 +6,12 @@ import java.lang.reflect.Field;
 @Entity
 public class Skill extends AbstractEntity {
 
-    private Field description;
-    public Field getDescription() {
+    private String description;
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(Field description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
