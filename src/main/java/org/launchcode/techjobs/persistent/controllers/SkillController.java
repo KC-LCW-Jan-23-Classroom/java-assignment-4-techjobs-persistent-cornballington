@@ -13,11 +13,12 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("Skill")
+@RequestMapping("skills")
 public class SkillController {
   @Autowired
     private SkillRepository skillRepository;
-  public String indexofSkills(Model model) {
+  @GetMapping("")
+  public String index(Model model) {
     model.addAttribute("skills", skillRepository.findAll());
             return "skills/index";
   }
@@ -34,10 +35,11 @@ public class SkillController {
 
     if (errors.hasErrors()) {
       return "skills/add";
-    } if (!errors.hasErrors()) {
-      skillRepository.save(newSkill);
     }
-    return "redirect: skills";
+      skillRepository.save(newSkill);
+
+
+    return "redirect:";
   }
 
   @GetMapping("view/{skillId}")

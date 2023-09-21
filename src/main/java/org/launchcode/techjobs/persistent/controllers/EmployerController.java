@@ -9,17 +9,17 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.lang.reflect.Field;
+
 import java.util.Optional;
 
 @Controller
 @RequestMapping("employers")
 public class EmployerController {
     @Autowired
-private EmployerRepository employerRepository;
+    private EmployerRepository employerRepository;
 
-   @GetMapping("/employers")
-   public String indexOfEmployers(Model model) {
+   @GetMapping("")
+   public String index (Model model) {
        model.addAttribute("employers", employerRepository.findAll());
        return "employers/index";
    }
@@ -38,7 +38,7 @@ private EmployerRepository employerRepository;
         } if (!errors.hasErrors()) {
             employerRepository.save(newEmployer);
         }
-        return "redirect: employers";
+        return "redirect:";
     }
     @GetMapping("view/{employerId}")
     public String displayViewEmployer(Model model, @PathVariable int employerId) {

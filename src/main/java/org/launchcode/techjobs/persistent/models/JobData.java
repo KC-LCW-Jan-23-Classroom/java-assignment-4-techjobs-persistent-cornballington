@@ -1,6 +1,7 @@
 package org.launchcode.techjobs.persistent.models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 // This is a change made in sandbox.
 
@@ -25,7 +26,7 @@ public class JobData {
 
         ArrayList<Job> results = new ArrayList<>();
 
-        if (value.toLowerCase().equals("all")){
+        if (value.equalsIgnoreCase("all")){
             return (ArrayList<Job>) allJobs;
         }
 
@@ -52,6 +53,7 @@ public class JobData {
         } else if (fieldName.equals("employer")){
             theValue = job.getEmployer().toString();
         } else {
+            //added toString()
             theValue = job.getSkills().toString();
         }
 
@@ -76,6 +78,7 @@ public class JobData {
                 results.add(job);
             } else if (job.getEmployer().toString().toLowerCase().contains(lower_val)) {
                 results.add(job);
+                //added toString()
             } else if (job.getSkills().toString().toLowerCase().contains(lower_val)) {
                 results.add(job);
             } else if (job.toString().toLowerCase().contains(lower_val)) {
